@@ -1,36 +1,17 @@
 import React from "react";
 import "./App.css";
 import Search from "./components/Search";
-import Results from "./components/Results";
-import Nominations from "./components/Nominations";
-import { queryByTestId } from "@testing-library/react";
 
-const API_KEY = process.env.API_KEY;
-const URL = "http://www.omdbapi.com/";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = "http://www.omdbapi.com/";
 
-let movieResult = [];
+console.log(process.env.REACT_APP_API_KEY);
 
-movieQuery = (event) => {
-  const query = event.target.value;
-  if (query.length) {
-    axios
-      .get(`${URL}?s=${query}&apikey=${API_KEY}&type=movie`)
-
-      .then((res) => {
-        this.setState(() => ({
-          movieResult: res.data,
-        }));
-      })
-      .catch();
-  }
-};
 function App() {
   return (
     <div className="App">
-      The Shoppies
+      <h1> Movie Nominations</h1>
       <Search />
-      <Results />
-      <Nominations />
     </div>
   );
 }
