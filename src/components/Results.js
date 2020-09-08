@@ -7,7 +7,6 @@ import {
   CardTitle,
   CardText,
   CardImg,
-  UncontrolledAlert,
 } from "reactstrap";
 
 export default class Results extends Component {
