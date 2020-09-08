@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Result from "../components/Results";
-import Nominations from "../components/Nominations";
+import ResultCard from "../components/ResultCard";
+import NominationCard from "../components/NominationCard";
 import "../App.css";
 import {
   UncontrolledAlert,
@@ -20,7 +20,6 @@ export default class Search extends Component {
     movieResult: [],
     message: "",
     nomList: [],
-    isNominate: false,
   };
 
   handleChange = (e) => {
@@ -50,8 +49,8 @@ export default class Search extends Component {
     await axios
       .get(SEARCH_URL)
       .then((res) => {
-        //console.log(res.data.Search);
         let list = res.data.Search;
+        list.mount = false;
         if (list && list.length) {
           this.setState({
             movieResult: list,
@@ -64,24 +63,22 @@ export default class Search extends Component {
       });
   };
 
-  toggleNominate = (obj) => {
+  updateNominateBtn = (movie) => {
     const { movieResult, nomList } = this.state;
-    if (nomList.length < 5 && nomList.imdbID !== obj.imdbID) {
-      this.addNominate(obj);
+    const item = movieResult.find((movieItem) => {
+      return movie.imdbID === movieItem.imdbID;
+    });
+    console.log("this it item", item);
+    if (item.imdbID) {
+      item.mount = true;
     }
-    // else {
-    //   this.removeNominate(obj);
-    // }
   };
-
   addNominate = (obj) => {
     const { nomList } = this.state;
     let nominations = [];
-
     nominations.push(obj);
     this.setState({
       nomList: [...nominations, ...nomList],
-      isNominate: true,
     });
   };
 
@@ -113,7 +110,7 @@ export default class Search extends Component {
         </UncontrolledAlert>
       );
     }
-    // console.log("nomList", nomList);
+    console.log("movie imdb", movieResult);
     return (
       <div>
         {warning}
@@ -152,12 +149,13 @@ export default class Search extends Component {
               {movieResult !== [] ? (
                 movieResult.length > 0 ? (
                   movieResult.map((movie) => (
-                    <Result
+                    <ResultCard
                       movieResult={movieResult}
                       movie={movie}
                       key={movie.imdbID}
-                      toggleNominate={this.toggleNominate.bind(this)}
-                      isNominate={isNominate}
+                      addNominate={this.addNominate.bind(this)}
+                      updateNominateBtn={this.updateNominateBtn.bind(this)}
+                      toggleNominate
                     />
                   ))
                 ) : (
@@ -189,7 +187,7 @@ export default class Search extends Component {
             )}
             <ol className="results-grid">
               {nomList.map((nominee) => (
-                <Nominations
+                <NominationCard
                   key={nominee.imdbID}
                   nominee={nominee}
                   removeNominate={this.removeNominate.bind(this)}

@@ -8,7 +8,7 @@ import {
   CardImg,
 } from "reactstrap";
 
-export default class Nominations extends Component {
+export default class NominationCard extends Component {
   render() {
     const { nominee, removeNominate } = this.props;
     const { Title, Poster, Year, imdbID } = nominee;
@@ -16,7 +16,6 @@ export default class Nominations extends Component {
       <>
         <Card>
           <CardImg top width="80%" src={Poster} alt={`${Title}`} />
-
           <CardBody>
             <Button onClick={() => removeNominate(nominee)}>Remove</Button>
           </CardBody>

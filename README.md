@@ -8,6 +8,6 @@ For the technical challenge, I created a React application to search for movies 
 
 ### DEPLOYMENT
 
-Please see (http://shopify-challenge-eula.surge.sh/) for deployment of the app.
+Please see https://shopify-challenge-eula.surge.sh/ for deployment of the app.
 
 I chose surge.sh because of the easy keystroke for deployment in the terminal.
