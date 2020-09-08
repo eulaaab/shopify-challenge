@@ -11,7 +11,7 @@ import {
 export default class NominationCard extends Component {
   render() {
     const { nominee, removeNominate } = this.props;
-    const { Title, Poster, Year, imdbID } = nominee;
+    const { Title, Poster, Year } = nominee;
     return (
       <>
         <Card>

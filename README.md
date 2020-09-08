@@ -4,7 +4,7 @@
 
 ### BACKGROUND
 
-For the technical challenge, I created a React application to search for movies using http://www.omdbapi.com/ API that let's you nominate up to 5 movies. You can only select up to 5 movies.
+For the technical challenge, I created a React application to search for movies using http://www.omdbapi.com/ API that let's you nominate up to 5 movies. You can only select up to 5 movies. To make the UI pretty, I used framework library bootstrap.
 
 ### DEPLOYMENT
 

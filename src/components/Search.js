@@ -64,7 +64,7 @@ export default class Search extends Component {
   };
 
   updateNominateBtn = (movie) => {
-    const { movieResult, nomList } = this.state;
+    const { movieResult } = this.state;
     const item = movieResult.find((movieItem) => {
       return movie.imdbID === movieItem.imdbID;
     });
@@ -83,25 +83,26 @@ export default class Search extends Component {
   };
 
   removeNominate = (obj) => {
-    const { movieResult, nomList } = this.state;
+    const { nomList, movieResult } = this.state;
     for (let i = nomList.length - 1; i >= 0; --i) {
       if (nomList[i].imdbID === obj.imdbID) {
-        console.log(obj);
         nomList.splice(i, 1);
         this.setState({
           nomList: [...nomList],
-          isNominate: false,
         });
       }
     }
-    // nomList = nomList.filter((item) => {
-    //   console.log("item", item);
-    //   return item.imdbID !== obj.imdbID;
-    // });
+    const item = movieResult.find((movieItem) => {
+      return obj.imdbID === movieItem.imdbID;
+    });
+    console.log("this it item", item);
+    if (item.imdbID) {
+      item.mount = false;
+    }
   };
 
   render() {
-    const { query, movieResult, nomList, isNominate } = this.state;
+    const { query, movieResult, nomList } = this.state;
     let warning = "";
     if (nomList.length === 5) {
       warning = (
@@ -155,7 +156,6 @@ export default class Search extends Component {
                       key={movie.imdbID}
                       addNominate={this.addNominate.bind(this)}
                       updateNominateBtn={this.updateNominateBtn.bind(this)}
-                      toggleNominate
                     />
                   ))
                 ) : (
@@ -191,6 +191,7 @@ export default class Search extends Component {
                   key={nominee.imdbID}
                   nominee={nominee}
                   removeNominate={this.removeNominate.bind(this)}
+                  updateNominateBtn={this.updateNominateBtn.bind(this)}
                 />
               ))}
             </ol>

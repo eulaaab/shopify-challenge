@@ -11,10 +11,10 @@ import {
 
 export default class ResultCard extends Component {
   render() {
-    console.log("mount", this.props.movie);
-    const { movie, movieResult, addNominate, updateNominateBtn } = this.props;
-    const { Title, Poster, Year, imdbID, mount } = movie;
-    console.log(mount, "this is mount");
+    //console.log("mount", this.props.movie);
+    const { movie, addNominate, updateNominateBtn } = this.props;
+    const { Title, Poster, Year, mount } = movie;
+    //console.log(mount, "this is mount");
     return (
       <>
         <Card>
@@ -27,13 +27,6 @@ export default class ResultCard extends Component {
           <CardBody>
             <CardTitle>{Title}</CardTitle>
             <CardText>{Year}</CardText>
-            {/*
- <Button
-              onClick={() => (addNominate(movie), updateNominateBtn(imdbID))}
-            >
-             Nominate
-            </Button>
-*/}
 
             {mount ? (
               <Button
