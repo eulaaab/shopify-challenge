@@ -1,18 +1,29 @@
 import React, { Component } from "react";
+import {
+  Card,
+  CardBody,
+  Button,
+  CardTitle,
+  CardText,
+  CardImg,
+} from "reactstrap";
 
 export default class Nominations extends Component {
   render() {
-    const { nominee, toggleNominate } = this.props;
-    //console.log(nomList);
+    const { nominee, removeNominate } = this.props;
     const { Title, Poster, Year, imdbID } = nominee;
     return (
-      <div>
-        Nominations
-        <p>{Title}</p>
-        <div>{Year}</div>
-        <img className="img" src={Poster} />
-        <button onClick={() => toggleNominate(nominee)}>Remove</button>
-      </div>
+      <>
+        <Card>
+          <CardImg top width="80%" src={Poster} alt={`${Title}`} />
+
+          <CardBody>
+            <Button onClick={() => removeNominate(nominee)}>Remove</Button>
+          </CardBody>
+          <CardTitle>{Title}</CardTitle>
+          <CardText>{Year}</CardText>
+        </Card>
+      </>
     );
   }
 }

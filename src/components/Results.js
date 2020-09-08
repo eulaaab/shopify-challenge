@@ -1,24 +1,44 @@
 import React, { Component } from "react";
 import "../App.css";
+import {
+  Card,
+  CardBody,
+  Button,
+  CardTitle,
+  CardText,
+  CardImg,
+  UncontrolledAlert,
+} from "reactstrap";
 
 export default class Results extends Component {
-  // handleNominate = (movie) => {
-  //   const { toggleNominate } = this.props;
-  //   console.log(movie);
-  //   //console.log(movieResult.Title);
-  //   toggleNominate(movie);
-  // };
   render() {
-    //console.log(this.props.toggleNominate);
-    const { movie, movieResult, toggleNominate } = this.props;
+    const { movie, movieResult, toggleNominate, isNominate } = this.props;
     const { Title, Poster, Year, imdbID } = movie;
+
     return (
-      <div className="result-card">
-        <p>{Title}</p>
-        <div>{Year}</div>
-        <img className="img" src={Poster} />
-        <button onClick={() => toggleNominate(movie)}>Nominate</button>
-      </div>
+      <>
+        <Card>
+          <CardImg
+            top
+            width="80%"
+            src={Poster ? Poster : "no image"}
+            alt={`${Title}`}
+          />
+          <CardBody>
+            <CardTitle>{Title}</CardTitle>
+            <CardText>{Year}</CardText>
+            <Button onClick={() => toggleNominate(movie)}>Nominate</Button>
+            {/*isNominate ? (
+              <Button onClick={() => toggleNominate(movie)} disabled>
+                Nominated!
+              </Button>
+            ) : (
+              <Button onClick={() => toggleNominate(movie)}>Nominate</Button>
+            )
+          */}
+          </CardBody>
+        </Card>
+      </>
     );
   }
 }

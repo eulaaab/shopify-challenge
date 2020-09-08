@@ -9,6 +9,8 @@ body {
 
 .App {
   text-align: center;
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 .App-logo {
@@ -58,11 +60,13 @@ body {
 .results-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10rem !important;
 }
 
 .results-container {
   width: 50%;
-  border: 1px;
+  border: solid grey 1px;
 }
 
 .result-card {
@@ -71,4 +75,25 @@ body {
 
 .button {
   height: 10px;
+}
+
+.card {
+  width: 45%;
+  margin: 3px;
+}
+
+.input-group {
+  width: 50% !important;
+}
+
+form {
+  display: flex;
+  margin: 0 auto;
+  place-content: center;
+  margin-bottom: 1rem;
+}
+
+.header {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 }
