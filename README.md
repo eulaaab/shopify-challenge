@@ -1,4 +1,4 @@
-# Web Developer Intership Winter 2021 Shopify Challenge
+# Web Developer Internship Winter 2021 Shopify Challenge
 
 ## by Eula Bengco
 
